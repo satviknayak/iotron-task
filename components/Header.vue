@@ -33,9 +33,14 @@
     onMounted(() => { 
         window.onscroll = function() {
             const currentScrollPos = useState('currentScrollpos', () => y);
-            if ((prevScrollpos.value > currentScrollPos.value)||show.value) {
+            if ((prevScrollpos.value > currentScrollPos.value)) {
                 document.getElementById("header").style.top = "0";
-            } else {
+            }
+            else if(show.value){
+                document.getElementById("header").style.top = "0";
+                show.value = false;
+            }
+            else {
                 document.getElementById("header").style.top = "-150px";
             }
             prevScrollpos.value = currentScrollPos.value;
